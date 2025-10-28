@@ -1,6 +1,8 @@
 In this repo, we are creating a solution on AWS Cloud using native AWS services that will utilize the AWS CloudWatch Agent to monitor disk utilization of EC2 instances across AWS Accounts and Regions.
 We will use the AWS CloudWatch Dashboard to monitor the disk usage of all instances within a region in one place, and CloudWatch Alarms with Amazon SNS to send notifications whenever the defined threshold is crossed.
 
+![highlevel](https://github.com/sonidepanshu/CloudWatchEC2DiskMonitoring/blob/main/flowaatHigherLevel.png)
+
 At a higher level,
 **Step 1:** The CloudWatch Agent running inside the EC2 instances sends data to the CloudWatch service, where a custom CloudWatch Alarm monitors the `disk_used_percent` metric and checks if it exceeds the defined utilization threshold.
 **Step 2:** When an EC2 instance’s EBS volume crosses the defined utilization threshold, the CloudWatch Alarm notifies the SNS topic, which then sends an email alert to the configured email address.
